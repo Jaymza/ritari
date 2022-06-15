@@ -1,62 +1,18 @@
 
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="style.css">
 
-<style>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
 
-body {
-  background-color: black;
-}
-
-#alue {
-    width:100%;
-    height:70%;
-    position:fixed;
-	
-}
-
-.rivi {
-display: inline-block;
-font-size: 20px;
-
-}
-
-.rivi2 {
-	
-	position: relative;
-}
-
-.nappi {	
-border-style: solid;
-border-width: 2px;
-display: inline-block;
-border-color: black;
-background-color: black;
-background-image: url("autotausta.jpg");
-background-repeat: no-repeat;
-background-size:     cover;  
-}
-
-@media screen and (min-width: 600px) {
-	.nappi {
-	width: 24%; 
-	height: 50%;
-	}
-}
-
-@media screen and (max-width: 599px) {
-	.nappi {
-	width: 45%; 
-	height: 45%;
-	}
-}
-</style
 
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script>
-$maxtime = 200;
+$maxtime = 20000;
 $ajastinpaalla = 0;
 $pisteet = 0;
 $oikea = "";
@@ -105,6 +61,14 @@ $(document).ready(function(){
 
     });
 });
+
+setInterval( <!-- viive, jos ei ammuta -->
+		  function() 
+		  {
+			arvouusi(); <!-- arvotaan uusi kohde -->
+			$ajastinpaalla = 1; <!-- laitetaan ajastin päälle -->
+		  }, 1000);
+
 
 
 $(document).ready(function(){
@@ -166,10 +130,15 @@ if ($rnd == 8) {$('#h').css("background-image", "url(devon.jpg)"); $devon = "h";
 </head>
 <body>
 
-<audio controls autoplay>
-    <source src="musa.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+
+
+
+
+
+
+
+
+
 
 <div class="rivi">Aika:</div><div class="rivi" id="aika"></div> <div class="rivi">Pisteet:</div><div class="rivi" id="pisteet">0</div>
 <div class="rivi">Ammu rosvoa ennenkuin aika kuluu umpeen</div>
@@ -182,6 +151,9 @@ if ($rnd == 8) {$('#h').css("background-image", "url(devon.jpg)"); $devon = "h";
 <div id="f" class="nappi"></div>
 <div id="g" class="nappi"></div>
 <div id="h" class="nappi"></div>
+<audio controls autoplay>
+    <source src="musa.mp3" type="audio/mpeg">
+  Your bro
 </div>
 
 
@@ -192,6 +164,8 @@ arvouusi(); <!-- arvotaan uusi sijainti rosvokortille, tai tässä tapauksessa k
 </script>
 
 </body>
+wser does not support the audio element.
+</audio>
 </html>
 
 
