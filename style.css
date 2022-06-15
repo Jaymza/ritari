@@ -1,0 +1,52 @@
+body {
+  background-color: black;
+}
+
+#alue {
+    width:100%;
+    height:70%;
+    position:fixed;
+	
+}
+
+.rivi {
+display: inline-block;
+font-size: 20px;
+
+}
+
+.rivi2 {
+	
+	position: relative;
+}
+
+.nappi {	
+border-style: solid;
+border-width: 2px;
+display: inline-block;
+border-color: black;
+background-color: black;
+background-image: url("autotausta.jpg");
+background-repeat: no-repeat;
+background-size:     cover;  
+}
+
+@media screen and (min-width: 600px) {
+	.nappi {
+	width: 24%; 
+	height: 50%;
+	}
+}
+
+@media screen and (max-width: 599px) {
+	.nappi {
+	width: 45%; 
+	height: 45%;
+	}
+}
+
+div {
+  color: mediumpurple;
+  font-family: 'Montserrat', sans-serif;
+
+}
