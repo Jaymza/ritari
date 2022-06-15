@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="style.css">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+
+
+<head>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script>
+$maxtime = 20000;
+$ajastinpaalla = 0;
+$pisteet = 0;
+$oikea = "";
+$vaara = "";
+$devon = "";
+$michael = "";
+$timer = $maxtime;
+setInterval(function()
+{
+	if ($ajastinpaalla == 1) {$timer = $timer - 1;} <!-- jos ajastin on päällä niin aika juoksee yhden aina jokaisella intervallilla, intervalli on 10millisekunttia -->
+	$('#aika').html($timer);
+	if ($timer == 0)
+	{	
+		alert("Olit liian hidas, yritä uudelleen. Sait pisteitä: " + $pisteet); <!-- Näytä viesti ruudulla -->
+		$maxtime = 200; <!-- aseta takaisin alkuarvot -->
+		$pisteet = 0;
+		$timer = $maxtime;
+		$ajastinpaalla = 0; <!-- poista ajastin päältä -->
+		$('#pisteet').html($pisteet); <!-- näytetään pisteet -->
+		$('#aika').html($maxtime); <!-- näytetään aika -->
+	}
+
+},10); <!-- intervallin pituus määritelty 10 millisekunniksi -->
+$(document).ready(function(){
+    $(".nappi").click(function(){	
+	if ($(this).attr('id') == $oikea) <!-- jos klikattu nappula on oikea niin tehdään alla olevat -->
+	{
+		$ajastinpaalla = 0; <!-- poista ajastin päältä -->
+		$pisteet = $pisteet + 1; <!-- lisää pisteitä yhdellä -->
+		$('#pisteet').html($pisteet); <!-- näytetään pisteet -->
+	    $('.nappi').css("background-image", "url(autotausta.jpg)"); <!-- asetaan kaikille nappuloille taustaksi pelkkä aavikkokortti -->
+		if ($maxtime > 30) {$maxtime = $maxtime - 10;} <!-- seuraavalla kerralla aikaa annetaan 10 millisekunttia vähemmän kuin viimeksi -->
+		$timer = Math.round($maxtime); <!-- varmistetaan että aika on kokonaisluku -->
+		$('#aika').html($maxtime); <!-- näytetään aika -->
+		setTimeout( <!-- pidetään sekunnin viive -->
+		  function() 
+		  {
+			arvouusi(); <!-- arvotaan uusi sijainti rosvokortille -->
+			$ajastinpaalla = 1; <!-- laitetaan astin päälle -->
+		  }, 1000);
+	}
+
+
+
+
+
+    });
+});
+
+setInterval( <!-- viive, jos ei ammuta -->
+		  function() 
+		  {
+			arvouusi(); <!-- arvotaan uusi kohde -->
+			$ajastinpaalla = 1; <!-- laitetaan ajastin päälle -->
+		  }, 1000);
+
+
+
+$(document).ready(function(){
+    $(".nappi").click(function(){	
+
+    	var audio = new Audio('musa.mp3');
+audio.play();
+
+	if ($(this).attr('id') == $devon) <!-- jos klikattu nappula on devon niin tehdään alla oleva vittuilu -->
+	{
+		alert("Ammuit Devonin! Sait pisteitä: " + $pisteet);
+
+	}
+
+
+
+
+    });
+});
+
+$(document).ready(function(){
+    $(".nappi").click(function(){	
+
+    	var audio = new Audio('musa.mp3');
+audio.play();
+
+	if ($(this).attr('id') == $michael) <!-- jos klikattu nappula on michael niin tehdään alla oleva vittuilu -->
+	{
+		alert("Ammuit Michaelin! Sait pisteitä: " + $pisteet);
+	}
+
+
+
+
+    });
+});
+
+
+
+
+
+
+
+
+function randomInt(xmin,xmax) { <!-- luvun arvonta funktio -->
+    return Math.floor( Math.random() * (xmax + 1 - xmin) + xmin ); 
+}
+
+function arvouusi ()
+{
+$rnd = randomInt(1,8); <!-- arvotaan luku yhdestä neljään -->
+$('.nappi').css("background-image", "url(autotausta.jpg)"); <!-- asetaan kaikille nappuloille taustaksi aavikkokortti -->
+if ($rnd == 1) {$('#a').css("background-image", "url(ase.jpg)"); $oikea = "a";} <!-- jos arvottu luku on 1 niin napin #a tausta on rosvo -->
+if ($rnd == 2) {$('#b').css("background-image", "url(devon.jpg)"); $devon = "b";} <!-- jos arvottu luku on 1 niin napin #b tausta on rosvo -->
+if ($rnd == 3) {$('#c').css("background-image", "url(hasseltausta.jpg)"); $michael = "c";}
+if ($rnd == 4) {$('#d').css("background-image", "url(devon.jpg)"); $devon = "d";}
+if ($rnd == 5) {$('#e').css("background-image", "url(devon.jpg)"); $devon = "e";}
+if ($rnd == 6) {$('#f').css("background-image", "url(hasseltausta.jpg)"); $michael = "f";}
+if ($rnd == 7) {$('#g').css("background-image", "url(ase.jpg)"); $oikea = "g";}
+if ($rnd == 8) {$('#h').css("background-image", "url(devon.jpg)"); $devon = "h";}
+
+}
+</script>
+
+
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+<div class="rivi">Aika:</div><div class="rivi" id="aika"></div> <div class="rivi">Pisteet:</div><div class="rivi" id="pisteet">0</div>
+<div class="rivi">Ammu rosvoa ennenkuin aika kuluu umpeen</div>
+<div id="alue">
+<div id="a" class="nappi"></div>
+<div id="b" class="nappi"></div>
+<div id="c" class="nappi"></div>
+<div id="d" class="nappi"></div>
+<div id="e" class="nappi"></div>
+<div id="f" class="nappi"></div>
+<div id="g" class="nappi"></div>
+<div id="h" class="nappi"></div>
+</div>
+
+
+
+<script>
+arvouusi(); <!-- arvotaan uusi sijainti rosvokortille, tai tässä tapauksessa kortin ensimmäinen sijainti -->
+
+</script>
+
+</body>
+
+</html>
+
+
